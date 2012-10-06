@@ -1,4 +1,5 @@
 # Django settings for djcalculator project.
+import os
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -9,10 +10,12 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
+PROJECT_PATH = os.path.dirname(__file__)
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': '/home/aminpy/workspace-python/djcalculator/sqlite.db',                      # Or path to database file if using sqlite3.
+        'NAME': os.path.join(PROJECT_PATH, "../sqlite.db").replace('\\', '/'),                      # Or path to database file if using sqlite3.
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
@@ -45,7 +48,7 @@ USE_TZ = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = ''
+MEDIA_ROOT = os.path.join(PROJECT_PATH, "../media").replace('\\', '/')
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
@@ -103,9 +106,7 @@ ROOT_URLCONF = 'djcalculator.urls'
 WSGI_APPLICATION = 'djcalculator.wsgi.application'
 
 TEMPLATE_DIRS = (
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
+    os.path.join(PROJECT_PATH, "../templates").replace("\\", "/"),
 )
 
 INSTALLED_APPS = (
