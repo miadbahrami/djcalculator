@@ -1,3 +1,15 @@
 body {
 	text-align: center;
 }
+
+input {
+	width: 40px;
+}
+
+input#result {
+	width: 173px;
+}
+
+input#equal {
+	width: 84px
+}
